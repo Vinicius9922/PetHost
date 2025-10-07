@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama UML - Sistema Veterinário</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .uml-diagram {
+            position: relative;
+            width: 100%;
+            min-height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            overflow: auto;
+        }
+        .actor {
+            position: absolute;
+            width: 80px;
+            text-align: center;
+        }
+        .actor-icon {
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+        .actor-name {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .use-case {
+            position: absolute;
+            width: 180px;
+            height: 40px;
+            background-color: #e9ecef;
+            border: 1px solid #adb5bd;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 10px;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .line {
+            position: absolute;
+            height: 2px;
+            background-color: #333;
+            transform-origin: 0 0;
+        }
+        .relationship {
+            position: absolute;
+            font-size: 12px;
+            color: #666;
+        }
+        .system-boundary {
+            position: absolute;
+            border: 2px dashed #6c757d;
+            border-radius: 5px;
+        }
+        .system-label {
+            position: absolute;
+            background: white;
+            padding: 0 10px;
+            font-weight: bold;
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diagrama UML - Sistema de Clínica Veterinária</h1>
+        
+        <div class="uml-diagram" id="umlDiagram">
+            <!-- Elementos serão inseridos via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const diagram = document.getElementById('umlDiagram');
+            const width = diagram.offsetWidth;
+            const height = diagram.offsetHeight;
+            
+            // Definir atores
+            const actors = [
+                { id: 1, name: 'Secretária', x: 50, y: height/2 - 100 },
+                { id: 2, name: 'Cliente', x: 50, y: height/2 },
+                { id: 3, name: 'Veterinário', x: 50, y: height/2 + 100 }
+            ];
+            
+            // Definir casos de uso
+            const useCases = [
+                { id: 1, name: 'Marcar Consulta', x: 250, y: height/2 - 100 },
+                { id: 2, name: 'Atualizar Cadastros', x: 250, y: height/2 - 30 },
+                { id: 3, name: 'Registrar Sintomas', x: 450, y: height/2 - 50 },
+                { id: 4, name: 'Realizar Diagnóstico', x: 450, y: height/2 + 30 },
+                { id: 5, name: 'Solicitar Exames', x: 650, y: height/2 },
+                { id: 6, name: 'Registrar Resultados', x: 650, y: height/2 + 80 },
+                { id: 7, name: 'Atualizar Histórico', x: 850, y: height/2 }
+            ];
+            
+            // Definir relacionamentos
+            const relationships = [
+                { from: 1, to: 1, type: 'association' }, // Secretária -> Marcar Consulta
+                { from: 1, to: 2, type: 'association' }, // Secretária -> Atualizar Cadastros
+                { from: 2, to: 3, type: 'association' }, // Cliente -> Registrar Sintomas
+                { from: 3, to: 4, type: 'association' }, // Veterinário -> Realizar Diagnóstico
+                { from: 3, to: 5, type: 'association' }, // Veterinário -> Solicitar Exames
+                { from: 3, to: 6, type: 'association' }, // Veterinário -> Registrar Resultados
+                { from: 1, to: 7, type: 'association' }, // Secretária -> Atualizar Histórico
+                { from: 3, to: 7, type: 'association' }, // Veterinário -> Atualizar Histórico
+                { from: 3, to: 4, type: 'include' },      // Registrar Sintomas inclui Realizar Diagnóstico
+                { from: 4, to: 5, type: 'extend' }        // Realizar Diagnóstico pode estender para Solicitar Exames
+            ];
+            
+            // Desenhar atores
+            actors.forEach(actor => {
+                const actorEl = document.createElement('div');
+                actorEl.className = 'actor';
+                actorEl.style.left = actor.x + 'px';
+                actorEl.style.top = actor.y + 'px';
+                
+                const icon = document.createElement('div');
+                icon.className = 'actor-icon';
+                icon.innerHTML = '👤';
+                
+                const name = document.createElement('div');
+                name.className = 'actor-name';
+                name.textContent = actor.name;
+                
+                actorEl.appendChild(icon);
+                actorEl.appendChild(name);
+                diagram.appendChild(actorEl);
+            });
+            
+            // Desenhar casos de uso
+            useCases.forEach(uc => {
+                const ucEl = document.createElement('div');
+                ucEl.className = 'use-case';
+                ucEl.style.left = uc.x + 'px';
+                ucEl.style.top = uc.y + 'px';
+                ucEl.textContent = uc.name;
+                diagram.appendChild(ucEl);
+            });
+            
+            // Desenhar linhas de relacionamento
+            relationships.forEach(rel => {
+                const fromActor = actors.find(a => a.id === rel.from);
+                const fromUC = useCases.find(uc => uc.id === rel.from);
+                const toActor = actors.find(a => a.id === rel.to);
+                const toUC = useCases.find(uc => uc.id === rel.to);
+                
+                let fromX, fromY, toX, toY;
+                
+                if (fromActor) {
+                    fromX = fromActor.x + 80;
+                    fromY = fromActor.y + 20;
+                } else if (fromUC) {
+                    fromX = fromUC.x + 180;
+                    fromY = fromUC.y + 20;
+                }
+                
+                if (toActor) {
+                    toX = toActor.x;
+                    toY = toActor.y + 20;
+                } else if (toUC) {
+                    toX = toUC.x;
+                    toY = toUC.y + 20;
+                }
+                
+                if (fromX && fromY && toX && toY) {
+                    const length = Math.sqrt(Math.pow(toX - fromX, 2) + Math.pow(toY - fromY, 2));
+                    const angle = Math.atan2(toY - fromY, toX - fromX) * 180 / Math.PI;
+                    
+                    const line = document.createElement('div');
+                    line.className = 'line';
+                    line.style.width = length + 'px';
+                    line.style.left = fromX + 'px';
+                    line.style.top = fromY + 'px';
+                    line.style.transform = `rotate(${angle}deg)`;
+                    
+                    // Estilo diferente para relacionamentos include/extend
+                    if (rel.type === 'include') {
+                        line.style.borderTop = '2px dashed #007bff';
+                    } else if (rel.type === 'extend') {
+                        line.style.borderTop = '2px dotted #28a745';
+                    }
+                    
+                    diagram.appendChild(line);
+                    
+                    // Adicionar rótulo para relacionamentos especiais
+                    if (rel.type === 'include' || rel.type === 'extend') {
+                        const label = document.createElement('div');
+                        label.className = 'relationship';
+                        label.textContent = `<<${rel.type}>>`;
+                        label.style.left = (fromX + length/2 - 30) + 'px';
+                        label.style.top = (fromY - 20) + 'px';
+                        diagram.appendChild(label);
+                    }
+                }
+            });
+            
+            // Adicionar limite do sistema
+            const boundary = document.createElement('div');
+            boundary.className = 'system-boundary';
+            boundary.style.left = '200px';
+            boundary.style.top = '50px';
+            boundary.style.width = (width - 250) + 'px';
+            boundary.style.height = (height - 100) + 'px';
+            diagram.appendChild(boundary);
+            
+            const systemLabel = document.createElement('div');
+            systemLabel.className = 'system-label';
+            systemLabel.textContent = 'Sistema de Clínica Veterinária';
+            systemLabel.style.left = '220px';
+            systemLabel.style.top = '40px';
+            diagram.appendChild(systemLabel);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - PetHost</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">🐾 PetHost</div>
+    <nav>
+      <a href="index.html" class="btn">Início</a>
+      <a href="login.html" class="btn btn-secondary">Entrar</a>
+    </nav>
+  </header>
+
+  <!-- Cadastro Section -->
+  <main class="form-container">
+    <h1>Cadastrar-se</h1>
+    <form id="cadastroForm">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+
+    <p class="extra-link">
+      Já tem conta? <a href="login.html">Entrar</a>
+    </p>
+
+    <!-- Aqui aparecerão erros -->
+    <p id="error-message" style="color: red; font-weight: bold;"></p>
+  </main>
+
+  <!-- Firebase + Script de Cadastro -->
+  <script type="module">
+    import { app } from "./js/firebase-config.js";
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } 
+      from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+    const auth = getAuth(app);
+
+    // Captura o formulário
+    document.getElementById("cadastroForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("password").value;
+
+      // Cria usuário no Firebase
+      createUserWithEmailAndPassword(auth, email, senha)
+        .then((userCredential) => {
+          const user = userCredential.user;
+
+          // Atualiza o perfil com o nome
+          updateProfile(user, { displayName: nome })
+            .then(() => {
+              alert("Cadastro realizado com sucesso!");
+              window.location.href = "index.html"; // Redireciona para a home
+            })
+            .catch((error) => {
+              document.getElementById("error-message").textContent = "Erro: " + error.message;
+            });
+        })
+        .catch((error) => {
+          document.getElementById("error-message").textContent = "Erro: " + error.message;
+        });
+    });
+  </script>
+</body>
+
+</html>
