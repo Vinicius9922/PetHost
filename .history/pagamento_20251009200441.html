@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamento - PetHost</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Ajustes específicos para esta tela */
+    main {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff7a00;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #333;
+      margin-top: 15px;
+      display: block;
+    }
+
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    .payment-options {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .payment-btn {
+      width: 45%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .pix-btn {
+      background-color: #00b37e;
+      color: #fff;
+    }
+
+    .credit-btn {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .payment-btn:hover {
+      opacity: 0.85;
+    }
+
+    .logo {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo" onclick="window.location.href='index.html'">🐾 PetHost</div>
+    <nav>
+      <a href="login.html" class="btn btn-secondary">Entrar</a>
+      <a href="cadastro.html" class="btn btn-primary">Cadastrar-se</a>
+    </nav>
+  </header>
+
+  <!-- Pagamento Section -->
+  <main>
+    <h1>Pagamento da Reserva</h1>
+    <form id="pagamentoForm">
+      <label for="checkin">Check-in</label>
+      <input type="date" id="checkin" name="checkin" required>
+
+      <label for="checkout">Check-out</label>
+      <input type="date" id="checkout" name="checkout" required>
+
+      <label for="observacoes">Observações</label>
+      <textarea id="observacoes" name="observacoes" placeholder="Informe detalhes ou necessidades especiais..."></textarea>
+
+      <div class="payment-options">
+        <button type="button" class="payment-btn pix-btn" id="btnPix">💸 Pagar com PIX</button>
+        <button type="button" class="payment-btn credit-btn" id="btnCredito">💳 Pagar com Crédito</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    // Apenas simulação de clique dos botões
+    document.getElementById("btnPix").addEventListener("click", () => {
+      alert("Pagamento via PIX selecionado!");
+    });
+
+    document.getElementById("btnCredito").addEventListener("click", () => {
+      alert("Pagamento via cartão de crédito selecionado!");
+    });
+  </script>
+</body>
+
+</html>

@@ -430,8 +430,6 @@ form input:focus, form select:focus {
   font-weight: normal;
 }
 
-/* ===============================CHECK-IN / PAGAMENTO================================== */
-
 .container {
   max-width: 600px;
   margin: 60px auto;
