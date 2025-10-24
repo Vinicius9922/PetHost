@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalhes do Daycare - PetHost</title>
+  <title>Detalhes da Reserva - PetHost</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
   <header class="header">
     <a href="index.html" class="logo">🐾 PetHost</a>
@@ -17,9 +15,7 @@
         <a href="cadastro.html" class="btn btn-primary">Cadastrar-se</a>
       </div>
       <div id="user-info" class="hidden">
-        <img
-          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iI2NjYyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiLz48L3N2Zz4="
-          alt="Foto de perfil" class="avatar">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iI2NjYyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiLz48L3N2Zz4=" alt="Foto de perfil" class="avatar">
         <span class="username">Usuário</span>
         <button id="logoutBtn" class="btn btn-secondary">Sair</button>
       </div>
@@ -27,21 +23,25 @@
   </header>
 
   <section class="daycare-banner">
-    <img src="https://via.placeholder.com/1200x300" alt="Imagem do Daycare" id="daycare-image">
+    <img src="img/placeholder-pethost-neutro.png" alt="Imagem do Daycare" id="daycare-image">
   </section>
 
   <main class="daycare-details">
+  
+    <section class="booking-info">
+      <h2>Detalhes da Sua Reserva</h2>
+      <p><strong>Check-in:</strong> <span id="reserva-checkin">...</span></p>
+      <p><strong>Check-out:</strong> <span id="reserva-checkout">...</span></p>
+      <p><strong>Observações:</strong> <span id="reserva-obs">...</span></p>
+    </section>
+  
     <h1 id="daycare-name">Carregando...</h1>
     <p class="location" id="daycare-location">📍 Carregando...</p>
     <p class="description" id="daycare-description">Carregando...</p>
 
     <h2>Serviços oferecidos</h2>
     <ul class="services" id="daycare-services">
-    </ul>
-
-    <div class="actions">
-      <a href="pagamento.html" id="reservarBtn" class="btn btn-primary">Reservar agora</a>
-    </div>
+      </ul>
   </main>
 
   <footer class="footer">
@@ -49,7 +49,5 @@
   </footer>
 
   <script type="module" src="js/auth.js"></script>
-  <script type="module" src="js/detalhes.js"></script>
-</body>
-
+  <script type="module" src="js/detalhes-reserva.js"></script> </body>
 </html>

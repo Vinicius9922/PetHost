@@ -1,7 +1,8 @@
+// Importando as libs principais do Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
-// Importar o Firestore
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBYXU6g-6lVheD_X1hFqt0p5uk0VOhFhLk",
@@ -17,7 +18,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// Inicializa e exporta o DB
-const db = getFirestore(app);
-
-export { app, db }; // Exportar o 'db'
+export { app };

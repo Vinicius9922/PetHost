@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-R">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro - PetHost</title>
   <link rel="stylesheet" href="css/style.css">
@@ -17,7 +17,7 @@
         <a href="cadastro.html" class="btn btn-primary">Cadastrar-se</a>
       </div>
       <div id="user-info" class="hidden">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iI2NjYyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiLz48L3N2Zz4=" alt="Foto de perfil" class="avatar">
+        <img src="https://via.placeholder.com/32" alt="Foto de perfil" class="avatar">
         <span class="username">Usuário</span>
         <button id="logoutBtn" class="btn btn-secondary">Sair</button>
       </div>
@@ -36,6 +36,9 @@
       <label for="password">Senha</label>
       <input type="password" id="password" name="password" required>
       
+      <label for="profilePic">Foto de Perfil</label>
+      <input type="file" id="profilePic" name="profilePic" accept="image/*">
+
       <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
 
@@ -48,12 +51,11 @@
 
   <script type="module">
     import { app } from "./js/firebase-config.js";
-    import { getAuth, createUserWithEmailAndPassword, updateProfile } 
-      from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-    // Imports do Storage foram removidos
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
 
     const auth = getAuth(app);
-    // Constante do Storage foi removida
+    const storage = getStorage(app);
 
     document.getElementById("cadastroForm").addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -61,18 +63,22 @@
       const nome = document.getElementById("nome").value;
       const email = document.getElementById("email").value;
       const senha = document.getElementById("password").value;
-      // Captura do arquivo de foto foi removida
+      const profilePicFile = document.getElementById("profilePic").files[0];
 
       try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
         const user = userCredential.user;
 
-        // Lógica de upload do Storage foi removida
+        let photoURL = null;
+        if (profilePicFile) {
+          const storageRef = ref(storage, `profile_pictures/${user.uid}/${profilePicFile.name}`);
+          await uploadBytes(storageRef, profilePicFile);
+          photoURL = await getDownloadURL(storageRef);
+        }
 
-        // Atualiza o perfil apenas com o nome
         await updateProfile(user, { 
-          displayName: nome
-          // photoURL foi removido
+          displayName: nome,
+          photoURL: photoURL 
         });
 
         alert("Cadastro realizado com sucesso!");

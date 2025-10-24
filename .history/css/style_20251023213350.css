@@ -85,8 +85,8 @@ body {
 /* USER INFO */
 .user-info {
   display: flex;
-  align-items: baseline; /* Alinha o texto do nome com o texto dos botões */
-  gap: 10px;           /* Aumenta o espaço (para ficar igual ao "Logar") */
+  align-items: center;
+  gap: 8px;
 }
 
 .user-info img.avatar {

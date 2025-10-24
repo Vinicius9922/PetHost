@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explorar Daycares - PetHost</title>
+  <title>Minhas Reservas - PetHost</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
   <header class="header">
     <a href="index.html" class="logo">🐾 PetHost</a>
@@ -24,30 +22,19 @@
     </nav>
   </header>
 
-  <section class="hero small">
-    <h1>Encontre o lugar ideal para seu pet</h1>
-    <p>Explore diversos anfitriões confiáveis e apaixonados por animais</p>
-  </section>
-
-  <section class="search-section">
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Buscar por nome do daycare...">
+  <main class="reservas-container">
+    <h1>Minhas Reservas</h1>
+    
+    <div id="reservas-list" class="reservas-list">
+      <p id="loading-message">Carregando suas reservas...</p>
     </div>
-  </section>
-
-  <main class="container daycares-container">
-    <div id="daycares-grid" class="grid-cards">
-      </div>
-
-    <div id="pagination-container" class="pagination">
-        </div>
   </main>
 
   <footer class="footer">
-    <p>&copy; 2025 PetHost - Todos os direitos reservados</p>
+    <p>© 2025 PetHost - Todos os direitos reservados.</p>
   </footer>
 
   <script type="module" src="js/auth.js"></script>
-  <script type="module" src="js/daycares.js"></script> </body>
-
+  <script type="module" src="js/reservas.js"></script>
+</body>
 </html>
