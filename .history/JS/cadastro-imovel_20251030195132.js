@@ -36,7 +36,6 @@ form.addEventListener("submit", async (e) => {
     try {
         // Adicionar o documento ao Firestore
         const docRef = await addDoc(collection(db, "daycares"), {
-            userId: user.uid,
             nome: nome,
             endereco: endereco,
             descricao: descricao,

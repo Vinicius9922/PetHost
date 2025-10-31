@@ -17,20 +17,17 @@
         <a href="cadastro.html" class="btn btn-primary">Cadastrar-se</a>
       </div>
       <div id="user-info" class="hidden">
-        <a href="perfil.html" class="avatar-link">
-          <img
-            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZHRoPSIzMiIgZmlsbD0iI2NjYyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiLz48L3N2Zz4="
-            alt="Foto de perfil" class="avatar">
-        </a>
-
-        <a href="perfil.html" class="username-link">
-          <span class="username">Usuário</span>
-        </a>
-
-        <a href="meus-daycares.html" class="btn">Meus Daycares</a> <a href="reservas.html" class="btn">Minhas
-          Reservas</a>
-        <button id="logoutBtn" class="btn btn-secondary">Sair</button>
-      </div>
+    <a href="perfil.html" class="avatar-link">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZHRoPSIzMiIgZmlsbD0iI2NjYyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiLz48L3N2Zz4=" alt="Foto de perfil" class="avatar">
+    </a>
+    
+    <a href="perfil.html" class="username-link">
+        <span class="username">Usuário</span>
+    </a>
+    
+    <a href="meus-daycares.html" class="btn">Meus Daycares</a> <a href="reservas.html" class="btn">Minhas Reservas</a>
+    <button id="logoutBtn" class="btn btn-secondary">Sair</button>
+</div>
     </nav>
   </header>
 
@@ -45,7 +42,7 @@
 
       <label for="password">Senha</label>
       <input type="password" id="password" name="password" required>
-
+      
       <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
 
@@ -58,7 +55,7 @@
 
   <script type="module">
     import { app } from "./js/firebase-config.js";
-    import { getAuth, createUserWithEmailAndPassword, updateProfile }
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } 
       from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
     // Imports do Storage foram removidos
 
@@ -80,7 +77,7 @@
         // Lógica de upload do Storage foi removida
 
         // Atualiza o perfil apenas com o nome
-        await updateProfile(user, {
+        await updateProfile(user, { 
           displayName: nome
           // photoURL foi removido
         });
@@ -95,5 +92,4 @@
   </script>
 
 </body>
-
 </html>

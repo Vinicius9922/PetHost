@@ -722,21 +722,3 @@ form input:focus, form select:focus {
     border-color: #ff7a00;
     outline: none;
 }
-
-/* =============================== ESTILO PARA CAMPO DESATIVADO ================================== */
-
-/* Estiliza o container do grupo de formulário desativado */
-.form-group-disabled {
-  opacity: 0.6; /* Deixa o grupo todo semi-transparente */
-  cursor: not-allowed; /* Mostra um ícone de 'não permitido' ao passar o mouse */
-}
-
-/* Garante que o cursor mude na label também */
-.form-group-disabled label {
-  cursor: not-allowed;
-}
-
-/* Garante que o cursor mude no input também */
-.form-group-disabled input[type="file"] {
-  cursor: not-allowed;
-}

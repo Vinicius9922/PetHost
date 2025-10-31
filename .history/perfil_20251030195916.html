@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Perfil - PetHost</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">🐾 PetHost</a>
+    <nav class="nav">
+      <div id="guest-links">...</div>
+      <div id="user-info" class="hidden">...</div>
+    </nav>
+  </header>
+
+  <main class="form-container">
+    <h1>Meu Perfil</h1>
+    
+    <form id="emailForm" class="form">
+      <div class="form-group">
+        <label for="email">E-mail Atual</label>
+        <input type="email" id="email" name="email" required disabled>
+      </div>
+      <div class="form-group">
+        <label for="newEmail">Novo E-mail</label>
+        <input type="email" id="newEmail" name="newEmail" placeholder="Digite o novo e-mail">
+      </div>
+      <button type="submit" class="btn btn-primary">Atualizar E-mail</button>
+    </form>
+    
+    <hr style="margin: 30px 0;">
+
+    <form id="passwordForm" class="form">
+      <div class="form-group">
+        <label for="newPassword">Nova Senha</label>
+        <input type="password" id="newPassword" name="newPassword" required placeholder="Mínimo 6 caracteres">
+      </div>
+      <button type="submit" class="btn btn-primary">Atualizar Senha</button>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 PetHost - Todos os direitos reservados.</p>
+  </footer>
+
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/perfil.js"></script>
+</body>
+</html>

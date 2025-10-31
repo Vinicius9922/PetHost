@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Daycare - PetHost</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">🐾 PetHost</a>
+    <nav class="nav">
+      <div id="guest-links">...</div>
+      <div id="user-info" class="hidden">...</div>
+    </nav>
+  </header>
+
+  <main class="form-container">
+    <h1>Editar Daycare</h1>
+    
+    <form id="editarDaycareForm" class="form">
+      <label for="nome">Nome do Daycare</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="endereco">Endereço</label>
+      <input type="text" id="endereco" name="endereco" required>
+
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" name="descricao" rows="5" required></textarea>
+
+      <label>Serviços oferecidos</label>
+      <div class="checkbox-group" id="servicos-group">
+        <label><input type="checkbox" name="servicos" value="hospedagem"> Hospedagem</label>
+        <label><input type="checkbox" name="servicos" value="alimentacao"> Alimentação</label>
+        <label><input type="checkbox" name="servicos" value="passeio"> Passeio</label>
+        <label><input type="checkbox" name="servicos" value="veterinario"> Atendimento Veterinário</label>
+      </div>
+
+      <label for="capacidade">Capacidade máxima de pets</label>
+      <input type="number" id="capacidade" name="capacidade" min="1" required>
+
+      <label for="preco">Preço por diária (R$)</label>
+      <input type="number" id="preco" name="preco" step="0.01" required>
+
+      <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 PetHost - Todos os direitos reservados.</p>
+  </footer>
+
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/editar-daycare.js"></script>
+</body>
+</html>
